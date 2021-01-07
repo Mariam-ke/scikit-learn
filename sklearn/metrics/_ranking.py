@@ -955,10 +955,13 @@ def roc_curve(y_true, y_score, *, pos_label=None, sample_weight=None,
 
     return fpr, tpr, thresholds
 
+
 def cumulative_gain_curve(y_true, y_score, pos_label=None):
-    """This function generates the points necessary to plot the Cumulative Gain for each ten percent of the samples
+    """This function generates the points necessary to plot the
+    Cumulative Gain for each ten percent of the samples
+
     Note: This implementation is restricted to the binary classification task.
-    
+
     Parameters
     ----------
 
@@ -985,11 +988,12 @@ def cumulative_gain_curve(y_true, y_score, pos_label=None):
     >>> from sklearn import metrics
     >>> y_true = [0, 1, 1, 0, 0, 0, 1, 1, 0, 0]
     >>> y_pred = [0.1, 0.8, 0.9, 0,3, 0.4, 0.6, 0.6, 0.6, 0.44]
-    >>> percentages, gains = metrics.cumulative_gain_curve(y_true, y_pred, pos_label=1)
+    >>> percentages, gains = metrics.cumulative_gain_curve(
+    ...     y_true, y_pred, pos_label=1)
     >>> percentages
     array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])
     >>> gains
-    array([0.  , 0.  , 0.25, 0.5 , 0.5 , 0.75, 1.  , 1.  , 1.  , 1.  , 1.  ]
+    array([0.  , 0.  , 0.25, 0.5 , 0.5 , 0.75, 1.  , 1.  , 1.  , 1.  , 1.  ])
 
     """
     y_true, y_score = np.asarray(y_true), np.asarray(y_score)
@@ -1022,7 +1026,6 @@ def cumulative_gain_curve(y_true, y_score, pos_label=None):
     percentages = np.insert(percentages, 0, [0])
 
     return percentages, gains
- 
 
 
 @_deprecate_positional_args
